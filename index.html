@@ -6,19 +6,24 @@
 
 <title>VIBORA — 3D Game Artist</title>
 
-<meta name="description" content="VIBORA — 3D Game Artist creating Roblox environments, characters, thumbnails and game-ready artwork.">
-<meta name="theme-color" content="#080808">
+<meta
+    name="description"
+    content="VIBORA — 3D Game Artist creating Roblox environments, characters, scenes and game-ready artwork."
+>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+>
 
 <style>
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 * {
     margin: 0;
@@ -47,18 +52,23 @@ button {
 }
 
 
-/* =========================
-   GLOBAL
-========================= */
+/* =========================================================
+   VARIABLES
+========================================================= */
 
 :root {
     --red: #e50914;
-    --red-dark: #9e0008;
+    --red-bright: #ff101c;
     --black: #070707;
     --dark: #101010;
-    --gray: #999999;
+    --gray: #888;
     --border: rgba(255,255,255,0.09);
 }
+
+
+/* =========================================================
+   GLOBAL
+========================================================= */
 
 .container {
     width: min(1180px, 92%);
@@ -74,9 +84,9 @@ button {
 }
 
 
-/* =========================
-   BACKGROUND EFFECT
-========================= */
+/* =========================================================
+   BACKGROUND
+========================================================= */
 
 body::before {
     content: "";
@@ -126,15 +136,16 @@ body::after {
 }
 
 
-/* =========================
+/* =========================================================
    NAVIGATION
-========================= */
+========================================================= */
 
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
+
     z-index: 1000;
 
     background: rgba(7,7,7,0.82);
@@ -169,13 +180,15 @@ body::after {
 
 .nav-links a {
     color: #aaa;
+
     font-size: 14px;
     font-weight: 700;
+
     transition: 0.25s;
 }
 
 .nav-links a:hover {
-    color: #fff;
+    color: white;
 }
 
 .nav-buttons {
@@ -185,6 +198,7 @@ body::after {
 
 .nav-button {
     padding: 11px 17px;
+
     border-radius: 6px;
 
     font-size: 12px;
@@ -207,14 +221,14 @@ body::after {
 }
 
 .server-button:hover {
+    background: var(--red-bright);
     transform: translateY(-2px);
-    background: #ff101c;
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero {
     min-height: 100vh;
@@ -242,14 +256,17 @@ body::after {
 
     font-size: 13px;
     font-weight: 800;
+
     letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .hero-small::before {
     content: "";
+
     width: 35px;
     height: 2px;
+
     background: var(--red);
 }
 
@@ -287,9 +304,15 @@ body::after {
     margin-top: 35px;
 }
 
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
 .primary-button,
 .secondary-button {
     display: inline-flex;
+
     align-items: center;
     justify-content: center;
 
@@ -308,7 +331,7 @@ body::after {
 }
 
 .primary-button:hover {
-    background: #ff101c;
+    background: var(--red-bright);
     transform: translateY(-3px);
 }
 
@@ -323,9 +346,9 @@ body::after {
 }
 
 
-/* =========================
+/* =========================================================
    SECTION HEADERS
-========================= */
+========================================================= */
 
 .section-heading {
     margin-bottom: 50px;
@@ -338,6 +361,7 @@ body::after {
     font-weight: 900;
 
     letter-spacing: 3px;
+
     text-transform: uppercase;
 
     margin-bottom: 12px;
@@ -364,9 +388,9 @@ body::after {
 }
 
 
-/* =========================
+/* =========================================================
    PORTFOLIO
-========================= */
+========================================================= */
 
 .portfolio-grid {
     display: grid;
@@ -396,6 +420,7 @@ body::after {
 
 .portfolio-card.large {
     grid-column: span 2;
+
     min-height: 600px;
 }
 
@@ -432,7 +457,9 @@ body::after {
     inset: 0;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: flex-end;
 
     padding: 30px;
@@ -474,9 +501,9 @@ body::after {
 }
 
 
-/* =========================
-   EMPTY IMAGE FALLBACK
-========================= */
+/* =========================================================
+   IMAGE ERROR
+========================================================= */
 
 .image-error {
     background:
@@ -496,9 +523,9 @@ body::after {
 }
 
 
-/* =========================
+/* =========================================================
    PRICING
-========================= */
+========================================================= */
 
 .pricing-grid {
     display: grid;
@@ -535,6 +562,7 @@ body::after {
 
 .price-card-top {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -611,9 +639,9 @@ body::after {
 }
 
 
-/* =========================
+/* =========================================================
    ABOUT
-========================= */
+========================================================= */
 
 .about-grid {
     display: grid;
@@ -649,7 +677,9 @@ body::after {
     min-height: 400px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: center;
 
     padding: 50px;
@@ -668,6 +698,7 @@ body::after {
 
 .about-stat {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
@@ -699,9 +730,9 @@ body::after {
 }
 
 
-/* =========================
+/* =========================================================
    COMMISSION
-========================= */
+========================================================= */
 
 .commission {
     position: relative;
@@ -747,15 +778,16 @@ body::after {
 
 .commission-buttons {
     display: flex;
+
     gap: 12px;
 
     margin-top: 30px;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer {
     padding: 50px 0;
@@ -767,7 +799,9 @@ footer {
 
 .footer-inner {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
@@ -788,9 +822,9 @@ footer {
 }
 
 
-/* =========================
+/* =========================================================
    LIGHTBOX
-========================= */
+========================================================= */
 
 .lightbox {
     position: fixed;
@@ -800,6 +834,7 @@ footer {
     z-index: 2000;
 
     display: none;
+
     align-items: center;
     justify-content: center;
 
@@ -818,6 +853,7 @@ footer {
     position: relative;
 
     max-width: 1200px;
+
     max-height: 90vh;
 
     width: 100%;
@@ -827,6 +863,7 @@ footer {
     display: block;
 
     width: 100%;
+
     max-height: 85vh;
 
     object-fit: contain;
@@ -857,9 +894,9 @@ footer {
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
 @media (max-width: 850px) {
 
@@ -886,6 +923,7 @@ footer {
 
     .portfolio-card.large {
         grid-column: span 1;
+
         min-height: 400px;
     }
 
@@ -899,6 +937,7 @@ footer {
 
     .about-grid {
         grid-template-columns: 1fr;
+
         gap: 30px;
     }
 
@@ -908,6 +947,7 @@ footer {
 
     .footer-inner {
         flex-direction: column;
+
         gap: 15px;
 
         text-align: center;
@@ -962,9 +1002,9 @@ footer {
 <body>
 
 
-<!-- =========================
+<!-- =========================================================
      NAVIGATION
-========================= -->
+========================================================= -->
 
 <header class="navbar">
 
@@ -974,17 +1014,27 @@ footer {
             VIBORA<span>.</span>
         </a>
 
+
         <nav class="nav-links">
 
-            <a href="#work">WORK</a>
+            <a href="#work">
+                WORK
+            </a>
 
-            <a href="#pricing">PRICING</a>
+            <a href="#pricing">
+                PRICING
+            </a>
 
-            <a href="#about">ABOUT</a>
+            <a href="#about">
+                ABOUT
+            </a>
 
-            <a href="#contact">CONTACT</a>
+            <a href="#contact">
+                CONTACT
+            </a>
 
         </nav>
+
 
         <div class="nav-buttons">
 
@@ -996,6 +1046,7 @@ footer {
             >
                 MY DISCORD
             </a>
+
 
             <a
                 class="nav-button server-button"
@@ -1013,9 +1064,10 @@ footer {
 </header>
 
 
-<!-- =========================
+
+<!-- =========================================================
      HERO
-========================= -->
+========================================================= -->
 
 <section class="hero" id="home">
 
@@ -1027,16 +1079,19 @@ footer {
                 3D GAME ARTIST
             </div>
 
+
             <h1>
                 I MAKE<br>
                 <span>WORLDS.</span>
             </h1>
+
 
             <p class="hero-description">
                 I create 3D environments, characters, scenes and
                 game-ready artwork designed to make games look
                 better and feel more alive.
             </p>
+
 
             <div class="hero-actions">
 
@@ -1046,6 +1101,7 @@ footer {
                 >
                     VIEW MY WORK
                 </a>
+
 
                 <a
                     href="https://discord.com/users/1514004142342017105"
@@ -1065,13 +1121,15 @@ footer {
 </section>
 
 
-<!-- =========================
+
+<!-- =========================================================
      WORK
-========================= -->
+========================================================= -->
 
 <section class="section" id="work">
 
     <div class="container">
+
 
         <div class="section-heading">
 
@@ -1091,10 +1149,13 @@ footer {
         </div>
 
 
+
         <div class="portfolio-grid">
 
 
-            <!-- WARRIOR -->
+            <!-- =================================================
+                 WARRIOR
+            ================================================== -->
 
             <div
                 class="portfolio-card large"
@@ -1107,6 +1168,7 @@ footer {
                     alt="Warrior 3D game scene"
                     onerror="imageError(this)"
                 >
+
 
                 <div class="portfolio-overlay">
 
@@ -1127,7 +1189,10 @@ footer {
             </div>
 
 
-            <!-- FOREST -->
+
+            <!-- =================================================
+                 FOREST
+            ================================================== -->
 
             <div
                 class="portfolio-card"
@@ -1140,6 +1205,7 @@ footer {
                     alt="Forest 3D environment"
                     onerror="imageError(this)"
                 >
+
 
                 <div class="portfolio-overlay">
 
@@ -1160,7 +1226,10 @@ footer {
             </div>
 
 
-            <!-- JOKER STYLE -->
+
+            <!-- =================================================
+                 CHARACTER
+            ================================================== -->
 
             <div
                 class="portfolio-card"
@@ -1173,6 +1242,7 @@ footer {
                     alt="Stylized character render"
                     onerror="imageError(this)"
                 >
+
 
                 <div class="portfolio-overlay">
 
@@ -1200,13 +1270,15 @@ footer {
 </section>
 
 
-<!-- =========================
+
+<!-- =========================================================
      PRICING
-========================= -->
+========================================================= -->
 
 <section class="section" id="pricing">
 
     <div class="container">
+
 
         <div class="section-heading">
 
@@ -1226,6 +1298,7 @@ footer {
         </div>
 
 
+
         <div class="pricing-grid">
 
 
@@ -1241,14 +1314,17 @@ footer {
 
                 </div>
 
+
                 <div class="price">
                     $10
                 </div>
+
 
                 <p class="price-description">
                     Small and simple artwork for personal
                     projects or content.
                 </p>
+
 
                 <ul class="features">
 
@@ -1273,6 +1349,7 @@ footer {
             </div>
 
 
+
             <!-- STANDARD -->
 
             <div class="price-card featured">
@@ -1289,14 +1366,17 @@ footer {
 
                 </div>
 
+
                 <div class="price">
                     $20
                 </div>
+
 
                 <p class="price-description">
                     More detailed scenes designed for
                     thumbnails, games and content.
                 </p>
+
 
                 <ul class="features">
 
@@ -1321,6 +1401,7 @@ footer {
             </div>
 
 
+
             <!-- CUSTOM -->
 
             <div class="price-card">
@@ -1333,14 +1414,17 @@ footer {
 
                 </div>
 
+
                 <div class="price">
                     $30<span>+</span>
                 </div>
+
 
                 <p class="price-description">
                     Large or complex projects requiring
                     custom work and extra detail.
                 </p>
+
 
                 <ul class="features">
 
@@ -1372,9 +1456,10 @@ footer {
 </section>
 
 
-<!-- =========================
+
+<!-- =========================================================
      ABOUT
-========================= -->
+========================================================= -->
 
 <section class="section" id="about">
 
@@ -1389,11 +1474,13 @@ footer {
                     ABOUT ME
                 </div>
 
+
                 <h2>
                     BUILD.<br>
                     CREATE.<br>
                     <span class="red">REPEAT.</span>
                 </h2>
+
 
                 <p>
                     I'm VIBORA, a 3D game artist focused on
@@ -1401,11 +1488,13 @@ footer {
                     visual assets for games and digital projects.
                 </p>
 
+
                 <p>
                     My goal is simple: create artwork that
                     looks good, feels polished and makes
                     your project stand out.
                 </p>
+
 
                 <a
                     href="https://discord.com/users/1514004142342017105"
@@ -1419,7 +1508,9 @@ footer {
             </div>
 
 
+
             <div class="about-box">
+
 
                 <div class="about-stat">
 
@@ -1433,6 +1524,7 @@ footer {
 
                 </div>
 
+
                 <div class="about-stat">
 
                     <span>
@@ -1444,6 +1536,7 @@ footer {
                     </strong>
 
                 </div>
+
 
                 <div class="about-stat">
 
@@ -1457,6 +1550,7 @@ footer {
 
                 </div>
 
+
                 <div class="about-stat">
 
                     <span>
@@ -1469,6 +1563,7 @@ footer {
 
                 </div>
 
+
             </div>
 
 
@@ -1479,9 +1574,10 @@ footer {
 </section>
 
 
-<!-- =========================
-     COMMISSION
-========================= -->
+
+<!-- =========================================================
+     CONTACT
+========================================================= -->
 
 <section class="section" id="contact">
 
@@ -1489,14 +1585,17 @@ footer {
 
         <div class="commission">
 
+
             <div class="section-label">
                 HAVE A PROJECT?
             </div>
+
 
             <h2>
                 LET'S MAKE<br>
                 SOMETHING <span class="red">SICK.</span>
             </h2>
+
 
             <p>
                 Want a custom render, environment, character
@@ -1504,7 +1603,9 @@ footer {
                 on Discord and let's talk about your project.
             </p>
 
+
             <div class="commission-buttons">
+
 
                 <a
                     href="https://discord.com/users/1514004142342017105"
@@ -1515,6 +1616,7 @@ footer {
                     MY DISCORD
                 </a>
 
+
                 <a
                     href="https://discord.gg/7FTFg7p6sQ"
                     target="_blank"
@@ -1523,6 +1625,7 @@ footer {
                 >
                     JOIN MY SERVER
                 </a>
+
 
             </div>
 
@@ -1533,21 +1636,25 @@ footer {
 </section>
 
 
-<!-- =========================
+
+<!-- =========================================================
      FOOTER
-========================= -->
+========================================================= -->
 
 <footer>
 
     <div class="container footer-inner">
 
+
         <div class="footer-logo">
             VIBORA<span>.</span>
         </div>
 
+
         <div class="footer-text">
             © 2026 VIBORA — 3D GAME ARTIST
         </div>
+
 
         <a
             href="https://discord.com/users/1514004142342017105"
@@ -1558,14 +1665,16 @@ footer {
             DISCORD
         </a>
 
+
     </div>
 
 </footer>
 
 
-<!-- =========================
+
+<!-- =========================================================
      LIGHTBOX
-========================= -->
+========================================================= -->
 
 <div
     class="lightbox"
@@ -1575,12 +1684,14 @@ footer {
 
     <div class="lightbox-content">
 
+
         <button
             class="lightbox-close"
             onclick="closeLightbox(event)"
         >
             ×
         </button>
+
 
         <img
             class="lightbox-image"
@@ -1589,20 +1700,22 @@ footer {
             alt="Portfolio preview"
         >
 
+
     </div>
 
 </div>
 
 
-<!-- =========================
+
+<!-- =========================================================
      JAVASCRIPT
-========================= -->
+========================================================= -->
 
 <script>
 
-/* =========================
-   IMAGE ERROR
-========================= */
+/* =========================================================
+   IMAGE ERROR HANDLER
+========================================================= */
 
 function imageError(image) {
 
@@ -1623,15 +1736,20 @@ function imageError(image) {
 }
 
 
-/* =========================
-   LIGHTBOX
-========================= */
+/* =========================================================
+   LIGHTBOX OPEN
+========================================================= */
 
 function openLightbox(card) {
 
-    const image = card.querySelector(".portfolio-image");
+    const image =
+        card.querySelector(".portfolio-image");
 
-    if (!image || image.style.display === "none") {
+    if (!image) {
+        return;
+    }
+
+    if (image.style.display === "none") {
         return;
     }
 
@@ -1640,6 +1758,7 @@ function openLightbox(card) {
 
     const lightboxImage =
         document.getElementById("lightboxImage");
+
 
     lightboxImage.src = image.src;
 
@@ -1650,6 +1769,10 @@ function openLightbox(card) {
     document.body.style.overflow = "hidden";
 }
 
+
+/* =========================================================
+   LIGHTBOX CLOSE
+========================================================= */
 
 function closeLightbox(event) {
 
@@ -1669,48 +1792,60 @@ function closeLightbox(event) {
 }
 
 
-/* =========================
+/* =========================================================
    ESCAPE KEY
-========================= */
+========================================================= */
 
-document.addEventListener("keydown", function(event) {
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-    if (event.key === "Escape") {
+        if (event.key === "Escape") {
 
-        const lightbox =
-            document.getElementById("lightbox");
+            const lightbox =
+                document.getElementById("lightbox");
 
-        lightbox.classList.remove("active");
+            lightbox.classList.remove("active");
 
-        document.body.style.overflow = "";
+            document.body.style.overflow = "";
+
+        }
 
     }
+);
 
-});
 
-
-/* =========================
+/* =========================================================
    SMOOTH NAVIGATION
-========================= */
+========================================================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(link => {
 
-    link.addEventListener("click", function(event) {
+        link.addEventListener(
+            "click",
+            function(event) {
 
-        const target =
-            document.querySelector(this.getAttribute("href"));
+                const target =
+                    document.querySelector(
+                        this.getAttribute("href")
+                    );
 
-        if (!target) return;
+                if (!target) {
+                    return;
+                }
 
-        event.preventDefault();
+                event.preventDefault();
 
-        target.scrollIntoView({
-            behavior: "smooth"
-        });
+                target.scrollIntoView({
+                    behavior: "smooth"
+                });
+
+            }
+        );
 
     });
-
-});
 
 </script>
 
