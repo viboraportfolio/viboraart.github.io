@@ -7,7 +7,11 @@
 <title>VIBORA — 3D Game Artist</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap');
+
+
+/* ================= GLOBAL ================= */
 
 * {
     margin: 0;
@@ -36,6 +40,7 @@ a {
     margin: auto;
 }
 
+
 /* ================= NAVBAR ================= */
 
 nav {
@@ -44,15 +49,19 @@ nav {
     left: 0;
     width: 100%;
     z-index: 1000;
+
     padding: 22px 0;
+
     background: rgba(7,7,7,.88);
     backdrop-filter: blur(12px);
+
     border-bottom: 1px solid #191919;
 }
 
 .nav-inner {
     width: min(1200px, 90%);
     margin: auto;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,6 +80,7 @@ nav {
 .nav-links {
     display: flex;
     gap: 30px;
+
     font-size: 13px;
     font-weight: 700;
     text-transform: uppercase;
@@ -85,48 +95,68 @@ nav {
     color: #fff;
 }
 
+
 /* ================= HERO ================= */
 
 .hero {
     min-height: 100vh;
+
     display: flex;
     align-items: center;
+
     position: relative;
+
     padding-top: 80px;
+
     overflow: hidden;
 }
 
 .hero::before {
     content: "";
+
     position: absolute;
+
     width: 650px;
     height: 650px;
+
     background: #b00000;
+
     filter: blur(180px);
+
     opacity: .16;
+
     right: -250px;
     top: 100px;
 }
 
 .hero-grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 50px;
+
     align-items: center;
 }
 
 .kicker {
     color: #e11;
+
     font-size: 13px;
     font-weight: 800;
+
     letter-spacing: 4px;
+
     margin-bottom: 15px;
 }
 
 .hero h1 {
     font-family: 'Anton', sans-serif;
+
     font-size: clamp(75px, 12vw, 155px);
+
     line-height: .82;
+
     letter-spacing: -3px;
 }
 
@@ -136,56 +166,78 @@ nav {
 
 .hero-sub {
     margin-top: 28px;
+
     font-size: 18px;
+
     color: #aaa;
+
     line-height: 1.6;
+
     max-width: 500px;
 }
 
 .buttons {
     margin-top: 35px;
+
     display: flex;
+
     gap: 14px;
+
     flex-wrap: wrap;
 }
 
 .button {
     display: inline-block;
+
     padding: 15px 24px;
+
     font-size: 12px;
+
     font-weight: 800;
+
     letter-spacing: 1px;
+
     text-transform: uppercase;
+
     border: 1px solid #333;
+
     transition: .2s;
 }
 
 .button.primary {
     background: #d00;
+
     border-color: #d00;
 }
 
 .button.primary:hover {
     background: #f11;
+
     transform: translateY(-2px);
 }
 
 .button.secondary:hover {
     border-color: #777;
+
     transform: translateY(-2px);
 }
+
 
 /* ================= PROFILE ================= */
 
 .hero-profile {
     display: flex;
+
     justify-content: center;
 }
 
 .profile-box {
     width: min(470px, 100%);
+
     aspect-ratio: 1;
+
     position: relative;
+
     background:
         radial-gradient(
             circle at center,
@@ -193,154 +245,322 @@ nav {
             #120909 42%,
             #090909 75%
         );
+
     border: 1px solid #292929;
+
     overflow: hidden;
 }
 
 .profile-box::before {
     content: "VIBORA";
+
     position: absolute;
+
     font-family: 'Anton', sans-serif;
+
     font-size: 120px;
+
     color: rgba(255,255,255,.025);
+
     transform: rotate(-20deg);
+
     top: 35%;
     left: -15%;
-    white-space: nowrap;
-}
 
-.profile-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    filter: contrast(1.08) saturate(.9);
+    white-space: nowrap;
 }
 
 .profile-placeholder {
     width: 100%;
     height: 100%;
+
     display: flex;
+
     justify-content: center;
     align-items: center;
+
     font-family: 'Anton', sans-serif;
+
     font-size: 100px;
+
     color: #d00;
 }
 
-/* ================= SECTION ================= */
+
+/* ================= SECTIONS ================= */
 
 section {
     padding: 120px 0;
+
     border-top: 1px solid #161616;
 }
 
 .section-label {
     color: #d00;
+
     font-size: 11px;
+
     font-weight: 800;
+
     letter-spacing: 4px;
+
     margin-bottom: 10px;
 }
 
 .section-title {
     font-family: 'Anton', sans-serif;
+
     font-size: clamp(55px, 8vw, 100px);
+
     line-height: .9;
+
     text-transform: uppercase;
+
     margin-bottom: 50px;
 }
 
-/* ================= WORK ================= */
+
+/* ================= PORTFOLIO ================= */
 
 .work-grid {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
+
     gap: 18px;
 }
 
 .work-card {
     position: relative;
-    min-height: 310px;
+
+    min-height: 380px;
+
     background: #101010;
+
     border: 1px solid #222;
+
     overflow: hidden;
+
     cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
 }
 
 .work-card.large {
     grid-column: span 2;
-    min-height: 440px;
+
+    min-height: 520px;
 }
+
+.work-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #900;
+
+    box-shadow:
+        0 15px 50px rgba(0,0,0,.5);
+}
+
+
+/* ================= PORTFOLIO IMAGES ================= */
+
+.work-image {
+    width: 100%;
+    height: 100%;
+
+    min-height: inherit;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition:
+        transform .6s cubic-bezier(.2,.8,.2,1),
+        filter .4s ease;
+}
+
+.work-card:hover .work-image {
+    transform: scale(1.045);
+
+    filter:
+        brightness(1.05)
+        contrast(1.05);
+}
+
+
+/* ================= IMAGE OVERLAY ================= */
 
 .work-card::after {
     content: "";
+
     position: absolute;
+
     inset: 0;
-    background: linear-gradient(
-        to top,
-        rgba(0,0,0,.9),
-        transparent 60%
-    );
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.95) 0%,
+            rgba(0,0,0,.55) 25%,
+            rgba(0,0,0,.1) 60%,
+            transparent 80%
+        );
+
     pointer-events: none;
 }
 
-.work-placeholder {
-    width: 100%;
-    height: 100%;
-    min-height: inherit;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background:
-        linear-gradient(135deg, #171717, #080808);
-    color: #333;
-    font-family: 'Anton', sans-serif;
-    font-size: 45px;
-    transition: .3s;
-}
 
-.work-card:hover .work-placeholder {
-    transform: scale(1.04);
-    color: #d00;
-}
+/* ================= WORK INFORMATION ================= */
 
 .work-info {
     position: absolute;
+
     z-index: 2;
-    bottom: 22px;
+
+    bottom: 25px;
+
     left: 25px;
+
+    right: 25px;
 }
 
-.work-info h3 {
-    font-size: 20px;
+.work-tag {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    padding: 6px 10px;
+
+    background: #d00;
+
+    color: white;
+
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
     text-transform: uppercase;
 }
 
-.work-info p {
-    margin-top: 5px;
-    color: #aaa;
-    font-size: 12px;
+.work-info h3 {
+    font-size: 22px;
+
+    text-transform: uppercase;
+
+    letter-spacing: .5px;
 }
+
+.work-info p {
+    margin-top: 6px;
+
+    color: #aaa;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* ================= LIGHTBOX ================= */
+
+.lightbox {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 5000;
+
+    background: rgba(0,0,0,.94);
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 30px;
+
+    backdrop-filter: blur(8px);
+}
+
+.lightbox.active {
+    display: flex;
+}
+
+.lightbox img {
+    max-width: 95vw;
+
+    max-height: 90vh;
+
+    object-fit: contain;
+
+    border: 1px solid #333;
+
+    box-shadow:
+        0 25px 100px rgba(0,0,0,.9);
+}
+
+.lightbox-close {
+    position: absolute;
+
+    top: 20px;
+
+    right: 30px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    font-size: 35px;
+
+    color: #fff;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.lightbox-close:hover {
+    color: #d00;
+
+    transform: rotate(90deg);
+}
+
 
 /* ================= PRICES ================= */
 
 .price-grid {
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
+
     gap: 18px;
 }
 
 .price-card {
     background: #0e0e0e;
+
     border: 1px solid #222;
+
     padding: 35px;
+
     position: relative;
+
     transition: .25s;
 }
 
 .price-card:hover {
     border-color: #900;
+
     transform: translateY(-5px);
 }
 
@@ -350,55 +570,72 @@ section {
 
 .price-card h3 {
     font-family: 'Anton', sans-serif;
+
     font-size: 30px;
 }
 
 .price {
     font-family: 'Anton', sans-serif;
+
     font-size: 55px;
+
     margin: 25px 0;
 }
 
 .price span {
     color: #777;
+
     font-family: 'Inter', sans-serif;
+
     font-size: 13px;
 }
 
 .price-card p {
     color: #999;
+
     line-height: 1.7;
+
     font-size: 14px;
 }
 
 .price-card ul {
     list-style: none;
+
     margin-top: 25px;
 }
 
 .price-card li {
     color: #bbb;
+
     margin: 12px 0;
+
     font-size: 13px;
 }
 
 .price-card li::before {
     content: "— ";
+
     color: #d00;
 }
+
 
 /* ================= ABOUT ================= */
 
 .about-grid {
     display: grid;
+
     grid-template-columns: 1fr 1fr;
+
     gap: 80px;
+
     align-items: center;
 }
 
 .about-text {
     color: #aaa;
+
     font-size: 18px;
+
     line-height: 1.8;
 }
 
@@ -408,67 +645,115 @@ section {
 
 .about-mark {
     border: 1px solid #222;
+
     min-height: 380px;
+
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     background:
-        radial-gradient(circle, #250909, #080808 70%);
+        radial-gradient(
+            circle,
+            #250909,
+            #080808 70%
+        );
 }
 
 .about-mark span {
     font-family: 'Anton', sans-serif;
+
     font-size: 150px;
+
     color: #d00;
 }
+
 
 /* ================= COMMISSION ================= */
 
 .commission {
     text-align: center;
+
     position: relative;
+
     overflow: hidden;
 }
 
 .commission::before {
     content: "V";
+
     position: absolute;
+
     font-family: 'Anton', sans-serif;
+
     font-size: 500px;
+
     color: rgba(255,0,0,.025);
+
     left: 50%;
+
     top: 50%;
-    transform: translate(-50%,-50%);
+
+    transform:
+        translate(-50%,-50%);
+
+    pointer-events: none;
 }
 
 .commission .section-title {
     margin-bottom: 20px;
+
+    position: relative;
+
+    z-index: 1;
 }
 
 .commission p {
     color: #999;
+
     max-width: 550px;
+
     margin: auto;
+
     line-height: 1.7;
+
+    position: relative;
+
+    z-index: 1;
 }
+
+.commission .buttons {
+    position: relative;
+
+    z-index: 2;
+}
+
 
 /* ================= FOOTER ================= */
 
 footer {
     padding: 35px 0;
+
     border-top: 1px solid #1b1b1b;
 }
 
 .footer-inner {
     width: min(1200px, 90%);
+
     margin: auto;
+
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 }
 
 .footer-logo {
     font-family: 'Anton', sans-serif;
+
     font-size: 25px;
 }
 
@@ -478,14 +763,18 @@ footer {
 
 .footer-links {
     display: flex;
+
     gap: 20px;
+
     color: #777;
+
     font-size: 12px;
 }
 
 .footer-links a:hover {
     color: white;
 }
+
 
 /* ================= MOBILE ================= */
 
@@ -516,8 +805,14 @@ footer {
         grid-template-columns: 1fr;
     }
 
+    .work-card {
+        min-height: 330px;
+    }
+
     .work-card.large {
         grid-column: span 1;
+
+        min-height: 380px;
     }
 
     .price-grid {
@@ -530,17 +825,67 @@ footer {
 
     .footer-inner {
         flex-direction: column;
+
         gap: 20px;
     }
+
+    .footer-links {
+        flex-wrap: wrap;
+
+        justify-content: center;
+    }
 }
+
+
+/* ================= SMALL MOBILE ================= */
+
+@media(max-width: 500px) {
+
+    .hero h1 {
+        font-size: 70px;
+    }
+
+    .section-title {
+        font-size: 60px;
+    }
+
+    .work-card.large {
+        min-height: 300px;
+    }
+
+    .work-card {
+        min-height: 280px;
+    }
+
+    .work-info {
+        left: 18px;
+        bottom: 18px;
+    }
+
+    .work-info h3 {
+        font-size: 18px;
+    }
+
+    .work-info p {
+        font-size: 11px;
+    }
+
+    .lightbox {
+        padding: 15px;
+    }
+}
+
 </style>
 </head>
 
+
 <body>
+
 
 <!-- ================= NAVIGATION ================= -->
 
 <nav>
+
     <div class="nav-inner">
 
         <a href="#" class="logo">
@@ -548,14 +893,29 @@ footer {
         </a>
 
         <div class="nav-links">
-            <a href="#work">Work</a>
-            <a href="#pricing">Prices</a>
-            <a href="#about">About</a>
-            <a href="#commission">Commission</a>
+
+            <a href="#work">
+                Work
+            </a>
+
+            <a href="#pricing">
+                Prices
+            </a>
+
+            <a href="#about">
+                About
+            </a>
+
+            <a href="#commission">
+                Commission
+            </a>
+
         </div>
 
     </div>
+
 </nav>
+
 
 
 <!-- ================= HERO ================= -->
@@ -564,29 +924,45 @@ footer {
 
     <div class="container hero-grid">
 
+
         <div>
 
             <div class="kicker">
                 3D GAME ARTIST
             </div>
 
+
             <h1>
                 VI<span>B</span>ORA
             </h1>
 
+
             <p class="hero-sub">
+
                 Thumbnails • Renders • Game Art
+
                 <br>
-                Creating bold visuals for Roblox games and creators.
+
+                Creating bold visuals for Roblox
+                games and creators.
+
             </p>
+
 
             <div class="buttons">
 
-                <a href="#work" class="button primary">
+                <a
+                    href="#work"
+                    class="button primary"
+                >
                     View My Work →
                 </a>
 
-                <a href="#commission" class="button secondary">
+
+                <a
+                    href="#commission"
+                    class="button secondary"
+                >
                     Commission Me
                 </a>
 
@@ -595,22 +971,10 @@ footer {
         </div>
 
 
+
         <div class="hero-profile">
 
             <div class="profile-box">
-
-                <!--
-                LATER:
-                Replace this with your actual profile image.
-
-                Example:
-
-                <img
-                    class="profile-image"
-                    src="profile.png"
-                    alt="Vibora"
-                >
-                -->
 
                 <div class="profile-placeholder">
                     V
@@ -620,9 +984,11 @@ footer {
 
         </div>
 
+
     </div>
 
 </header>
+
 
 
 <!-- ================= WORK ================= -->
@@ -631,91 +997,128 @@ footer {
 
     <div class="container">
 
+
         <div class="section-label">
             PORTFOLIO
         </div>
+
 
         <h2 class="section-title">
             My Work
         </h2>
 
 
+
         <div class="work-grid">
 
-            <div class="work-card large">
 
-                <div class="work-placeholder">
-                    THUMBNAIL
-                </div>
+            <!-- ================= WARRIOR ================= -->
+
+            <div
+                class="work-card large"
+                onclick="openLightbox('images/warrior-render.png')"
+            >
+
+                <img
+                    class="work-image"
+                    src="images/warrior-render.png"
+                    alt="Warrior Roblox 3D render"
+                >
+
 
                 <div class="work-info">
-                    <h3>Game Thumbnail</h3>
-                    <p>Roblox • Promotional Art</p>
+
+                    <div class="work-tag">
+                        3D RENDER
+                    </div>
+
+                    <h3>
+                        Warrior Battle Scene
+                    </h3>
+
+                    <p>
+                        Roblox • Character • Environment • Lighting
+                    </p>
+
                 </div>
 
             </div>
 
 
-            <div class="work-card">
 
-                <div class="work-placeholder">
-                    RENDER
-                </div>
+            <!-- ================= FOREST ================= -->
+
+            <div
+                class="work-card"
+                onclick="openLightbox('images/forest-render.png')"
+            >
+
+                <img
+                    class="work-image"
+                    src="images/forest-render.png"
+                    alt="Roblox forest character render"
+                >
+
 
                 <div class="work-info">
-                    <h3>3D Render</h3>
-                    <p>Character • Environment</p>
+
+                    <div class="work-tag">
+                        GAME ART
+                    </div>
+
+                    <h3>
+                        Forest Character Scene
+                    </h3>
+
+                    <p>
+                        Roblox • Characters • Environment
+                    </p>
+
                 </div>
 
             </div>
 
 
-            <div class="work-card">
 
-                <div class="work-placeholder">
-                    GAME ART
-                </div>
+            <!-- ================= JOKER ================= -->
+
+            <div
+                class="work-card"
+                onclick="openLightbox('images/joker-render.png')"
+            >
+
+                <img
+                    class="work-image"
+                    src="images/joker-render.png"
+                    alt="Roblox character render"
+                >
+
 
                 <div class="work-info">
-                    <h3>Game Art</h3>
-                    <p>Roblox • Game Development</p>
+
+                    <div class="work-tag">
+                        CHARACTER ART
+                    </div>
+
+                    <h3>
+                        Character Render
+                    </h3>
+
+                    <p>
+                        Roblox • Character • Scene • Lighting
+                    </p>
+
                 </div>
 
             </div>
 
-
-            <div class="work-card">
-
-                <div class="work-placeholder">
-                    ART
-                </div>
-
-                <div class="work-info">
-                    <h3>Custom Artwork</h3>
-                    <p>Creator • Branding</p>
-                </div>
-
-            </div>
-
-
-            <div class="work-card">
-
-                <div class="work-placeholder">
-                    3D
-                </div>
-
-                <div class="work-info">
-                    <h3>3D Scene</h3>
-                    <p>Environment • Lighting</p>
-                </div>
-
-            </div>
 
         </div>
 
     </div>
 
 </section>
+
 
 
 <!-- ================= PRICING ================= -->
@@ -724,81 +1127,139 @@ footer {
 
     <div class="container">
 
+
         <div class="section-label">
             SERVICES
         </div>
+
 
         <h2 class="section-title">
             Prices
         </h2>
 
 
+
         <div class="price-grid">
+
+
+            <!-- THUMBNAILS -->
 
             <div class="price-card">
 
-                <h3>THUMBNAILS</h3>
+                <h3>
+                    THUMBNAILS
+                </h3>
+
 
                 <div class="price">
                     $5<span>+</span>
                 </div>
+
 
                 <p>
                     Eye-catching Roblox thumbnails
                     designed to make your game stand out.
                 </p>
 
+
                 <ul>
-                    <li>Custom scene</li>
-                    <li>Character posing</li>
-                    <li>Lighting & effects</li>
+
+                    <li>
+                        Custom scene
+                    </li>
+
+                    <li>
+                        Character posing
+                    </li>
+
+                    <li>
+                        Lighting & effects
+                    </li>
+
                 </ul>
 
             </div>
 
 
+
+            <!-- RENDERS -->
+
             <div class="price-card featured">
 
-                <h3>RENDERS</h3>
+                <h3>
+                    RENDERS
+                </h3>
+
 
                 <div class="price">
                     $10<span>+</span>
                 </div>
+
 
                 <p>
                     High-quality 3D renders for
                     games, profiles, and promotions.
                 </p>
 
+
                 <ul>
-                    <li>Custom environment</li>
-                    <li>Character rendering</li>
-                    <li>Custom lighting</li>
+
+                    <li>
+                        Custom environment
+                    </li>
+
+                    <li>
+                        Character rendering
+                    </li>
+
+                    <li>
+                        Custom lighting
+                    </li>
+
                 </ul>
 
             </div>
 
 
+
+            <!-- CUSTOM ART -->
+
             <div class="price-card">
 
-                <h3>CUSTOM ART</h3>
+                <h3>
+                    CUSTOM ART
+                </h3>
+
 
                 <div class="price">
                     $15<span>+</span>
                 </div>
+
 
                 <p>
                     Custom artwork made around
                     your idea and visual style.
                 </p>
 
+
                 <ul>
-                    <li>Custom concept</li>
-                    <li>Unique composition</li>
-                    <li>Creator branding</li>
+
+                    <li>
+                        Custom concept
+                    </li>
+
+                    <li>
+                        Unique composition
+                    </li>
+
+                    <li>
+                        Creator branding
+                    </li>
+
                 </ul>
 
             </div>
+
 
         </div>
 
@@ -807,11 +1268,13 @@ footer {
 </section>
 
 
+
 <!-- ================= ABOUT ================= -->
 
 <section id="about">
 
     <div class="container about-grid">
+
 
         <div>
 
@@ -819,10 +1282,15 @@ footer {
                 ABOUT
             </div>
 
+
             <h2 class="section-title">
+
                 WHO IS<br>
+
                 VIBORA?
+
             </h2>
+
 
             <p class="about-text">
 
@@ -840,34 +1308,52 @@ footer {
         </div>
 
 
+
         <div class="about-mark">
-            <span>V</span>
+
+            <span>
+                V
+            </span>
+
         </div>
+
 
     </div>
 
 </section>
 
 
+
 <!-- ================= COMMISSION ================= -->
 
-<section id="commission" class="commission">
+<section
+    id="commission"
+    class="commission"
+>
+
 
     <div class="container">
+
 
         <div class="section-label">
             COMMISSIONS
         </div>
 
+
         <h2 class="section-title">
             NEED GAME ART?
         </h2>
 
+
         <p>
+
             Have an idea for a thumbnail, render,
             or custom piece of artwork?
+
             <br>
+
             Send me your idea and let's make it happen.
+
         </p>
 
 
@@ -876,7 +1362,6 @@ footer {
             style="justify-content:center;"
         >
 
-            <!-- VIBORA DISCORD SERVER -->
 
             <a
                 href="https://discord.gg/MKwFtJAvbv"
@@ -884,14 +1369,19 @@ footer {
                 rel="noopener noreferrer"
                 class="button primary"
             >
+
                 Start A Commission →
+
             </a>
 
+
         </div>
+
 
     </div>
 
 </section>
+
 
 
 <!-- ================= FOOTER ================= -->
@@ -900,34 +1390,149 @@ footer {
 
     <div class="footer-inner">
 
+
         <div class="footer-logo">
+
             VI<span>B</span>ORA
+
         </div>
 
 
+
         <div class="footer-links">
+
 
             <a href="#work">
                 WORK
             </a>
 
+
             <a href="#pricing">
                 PRICES
             </a>
+
 
             <a href="#about">
                 ABOUT
             </a>
 
+
             <a href="#commission">
                 CONTACT
             </a>
 
+
         </div>
+
 
     </div>
 
 </footer>
+
+
+
+<!-- ================= LIGHTBOX ================= -->
+
+<div
+    class="lightbox"
+    id="lightbox"
+    onclick="closeLightbox(event)"
+>
+
+
+    <div
+        class="lightbox-close"
+        onclick="closeLightbox()"
+    >
+        ×
+    </div>
+
+
+    <img
+        id="lightbox-image"
+        src=""
+        alt="Full size artwork"
+    >
+
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+function openLightbox(image) {
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+    const lightboxImage =
+        document.getElementById("lightbox-image");
+
+
+    lightboxImage.src = image;
+
+
+    lightbox.classList.add("active");
+
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+
+function closeLightbox(event) {
+
+    if (
+        event &&
+        event.target.id !== "lightbox" &&
+        !event.target.classList.contains("lightbox-close")
+    ) {
+
+        return;
+
+    }
+
+
+    const lightbox =
+        document.getElementById("lightbox");
+
+
+    lightbox.classList.remove("active");
+
+
+    document.body.style.overflow = "";
+
+}
+
+
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (event.key === "Escape") {
+
+            const lightbox =
+                document.getElementById("lightbox");
+
+
+            lightbox.classList.remove("active");
+
+
+            document.body.style.overflow = "";
+
+        }
+
+    }
+);
+
+
+</script>
 
 
 </body>
