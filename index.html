@@ -1,1450 +1,1719 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>VIBORA — 3D Game Artist</title>
+
+<meta name="description" content="VIBORA — 3D Game Artist creating Roblox environments, characters, thumbnails and game-ready artwork.">
+<meta name="theme-color" content="#080808">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #070707;
+    color: #ffffff;
+    font-family: "Inter", sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font-family: inherit;
+}
+
+
+/* =========================
+   GLOBAL
+========================= */
+
+:root {
+    --red: #e50914;
+    --red-dark: #9e0008;
+    --black: #070707;
+    --dark: #101010;
+    --gray: #999999;
+    --border: rgba(255,255,255,0.09);
+}
+
+.container {
+    width: min(1180px, 92%);
+    margin: auto;
+}
+
+.section {
+    padding: 120px 0;
+}
+
+.red {
+    color: var(--red);
+}
+
+
+/* =========================
+   BACKGROUND EFFECT
+========================= */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(229,9,20,0.10),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 70%,
+            rgba(229,9,20,0.07),
+            transparent 30%
+        );
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.015) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 85%
+    );
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+
+    background: rgba(7,7,7,0.82);
+    backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.nav-inner {
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-family: "Anton", sans-serif;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: var(--red);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: #aaa;
+    font-size: 14px;
+    font-weight: 700;
+    transition: 0.25s;
+}
 
-    <title>VIBORA — 3D Game Artist</title>
+.nav-links a:hover {
+    color: #fff;
+}
 
-    <meta name="description" content="VIBORA — 3D Game Artist specializing in Roblox renders, game art, thumbnails, environments and custom artwork.">
+.nav-buttons {
+    display: flex;
+    gap: 10px;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+.nav-button {
+    padding: 11px 17px;
+    border-radius: 6px;
 
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    font-size: 12px;
+    font-weight: 800;
 
-    <style>
+    transition: 0.25s;
+}
 
-        /* =========================
-           RESET
-        ========================= */
+.discord-button {
+    background: #5865f2;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+.discord-button:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+.server-button {
+    background: var(--red);
+}
 
-        body {
-            background: #050505;
-            color: #ffffff;
-            font-family: "Inter", sans-serif;
-            overflow-x: hidden;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        img {
-            display: block;
-            max-width: 100%;
-        }
+.server-button:hover {
+    transform: translateY(-2px);
+    background: #ff101c;
+}
 
-
-        /* =========================
-           VARIABLES
-        ========================= */
-
-        :root {
-            --red: #ff1e1e;
-            --red-dark: #a80000;
-            --black: #050505;
-            --dark: #0c0c0c;
-            --dark2: #111111;
-            --border: #242424;
-            --gray: #9a9a9a;
-        }
 
+/* =========================
+   HERO
+========================= */
 
-        /* =========================
-           SCROLLBAR
-        ========================= */
+.hero {
+    min-height: 100vh;
 
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+    display: flex;
+    align-items: center;
 
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
+    padding-top: 76px;
 
-        ::-webkit-scrollbar-thumb {
-            background: #8c0000;
-            border-radius: 10px;
-        }
+    position: relative;
+}
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--red);
-        }
+.hero-content {
+    max-width: 900px;
+}
 
+.hero-small {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 
-        /* =========================
-           NAVBAR
-        ========================= */
+    margin-bottom: 22px;
 
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 72px;
+    color: #aaa;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
-            padding: 0 7%;
+.hero-small::before {
+    content: "";
+    width: 35px;
+    height: 2px;
+    background: var(--red);
+}
 
-            background: rgba(5, 5, 5, 0.88);
-            backdrop-filter: blur(14px);
+.hero h1 {
+    font-family: "Anton", sans-serif;
 
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: clamp(75px, 12vw, 170px);
 
-            z-index: 1000;
-        }
+    line-height: 0.82;
 
-        .logo {
-            font-family: "Anton", sans-serif;
-            font-size: 31px;
-            letter-spacing: 2px;
-        }
+    letter-spacing: -2px;
 
-        .logo span {
-            color: var(--red);
-        }
+    text-transform: uppercase;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
+.hero h1 span {
+    color: var(--red);
+}
 
-        .nav-links a {
-            color: #bdbdbd;
-            font-size: 14px;
-            font-weight: 700;
-            transition: 0.25s;
-        }
+.hero-description {
+    max-width: 600px;
 
-        .nav-links a:hover {
-            color: white;
-        }
+    margin-top: 35px;
 
-        .nav-button {
-            background: var(--red);
-            padding: 11px 20px;
-            border-radius: 5px;
+    color: #999;
 
-            font-size: 13px;
-            font-weight: 800;
+    font-size: 17px;
+    line-height: 1.8;
+}
 
-            transition: 0.25s;
-        }
+.hero-actions {
+    display: flex;
+    gap: 14px;
 
-        .nav-button:hover {
-            background: #ff4444;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 30, 30, 0.25);
-        }
+    margin-top: 35px;
+}
 
+.primary-button,
+.secondary-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
-        /* =========================
-           HERO
-        ========================= */
+    padding: 15px 23px;
 
-        .hero {
-            min-height: 100vh;
+    border-radius: 6px;
 
-            display: flex;
-            align-items: center;
+    font-size: 13px;
+    font-weight: 900;
 
-            padding: 130px 7% 80px;
+    transition: 0.25s;
+}
 
-            position: relative;
-            overflow: hidden;
+.primary-button {
+    background: var(--red);
+}
 
-            background:
-                radial-gradient(circle at 80% 40%, rgba(170,0,0,0.15), transparent 35%),
-                #050505;
-        }
+.primary-button:hover {
+    background: #ff101c;
+    transform: translateY(-3px);
+}
 
-        .hero::before {
-            content: "";
-            position: absolute;
+.secondary-button {
+    border: 1px solid #333;
+    background: #111;
+}
 
-            width: 550px;
-            height: 550px;
+.secondary-button:hover {
+    border-color: #666;
+    transform: translateY(-3px);
+}
 
-            right: -250px;
-            top: 100px;
 
-            border-radius: 50%;
+/* =========================
+   SECTION HEADERS
+========================= */
 
-            border: 1px solid rgba(255,30,30,0.15);
-            box-shadow:
-                0 0 100px rgba(255,0,0,0.04);
+.section-heading {
+    margin-bottom: 50px;
+}
 
-            pointer-events: none;
-        }
+.section-label {
+    color: var(--red);
 
-        .hero-content {
-            max-width: 850px;
-            position: relative;
-            z-index: 2;
-        }
+    font-size: 12px;
+    font-weight: 900;
 
-        .hero-tag {
-            display: inline-flex;
+    letter-spacing: 3px;
+    text-transform: uppercase;
 
-            padding: 8px 13px;
+    margin-bottom: 12px;
+}
 
-            border: 1px solid #3a1515;
-            background: rgba(255,0,0,0.05);
+.section-heading h2 {
+    font-family: "Anton", sans-serif;
 
-            color: #ff5a5a;
+    font-size: clamp(50px, 7vw, 90px);
 
-            font-size: 12px;
-            font-weight: 800;
+    line-height: 0.95;
 
-            letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
 
-            margin-bottom: 25px;
-        }
+.section-heading p {
+    color: #777;
 
-        .hero h1 {
-            font-family: "Anton", sans-serif;
+    max-width: 600px;
 
-            font-size: clamp(70px, 11vw, 155px);
+    margin-top: 18px;
 
-            line-height: 0.88;
+    line-height: 1.7;
+}
 
-            letter-spacing: 1px;
 
-            margin-bottom: 30px;
-        }
+/* =========================
+   PORTFOLIO
+========================= */
 
-        .hero h1 span {
-            color: var(--red);
-        }
+.portfolio-grid {
+    display: grid;
 
-        .hero-description {
-            max-width: 600px;
+    grid-template-columns: repeat(2, 1fr);
 
-            color: #a7a7a7;
+    gap: 18px;
+}
 
-            font-size: 18px;
-            line-height: 1.7;
+.portfolio-card {
+    position: relative;
 
-            margin-bottom: 35px;
-        }
+    overflow: hidden;
 
-        .hero-buttons {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-        }
+    min-height: 420px;
 
-        .primary-button {
-            background: var(--red);
+    border-radius: 10px;
 
-            padding: 15px 25px;
+    background: #101010;
 
-            border-radius: 5px;
+    border: 1px solid var(--border);
 
-            font-weight: 800;
-            font-size: 14px;
+    cursor: pointer;
 
-            transition: 0.25s;
-        }
+    transition: 0.35s;
+}
 
-        .primary-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(255,30,30,0.22);
-        }
+.portfolio-card.large {
+    grid-column: span 2;
+    min-height: 600px;
+}
 
-        .secondary-button {
-            border: 1px solid #303030;
+.portfolio-card:hover {
+    transform: translateY(-5px);
 
-            padding: 15px 25px;
+    border-color: rgba(229,9,20,0.5);
 
-            border-radius: 5px;
+    box-shadow:
+        0 20px 70px rgba(0,0,0,0.45),
+        0 0 35px rgba(229,9,20,0.08);
+}
 
-            font-weight: 800;
-            font-size: 14px;
+.portfolio-image {
+    position: absolute;
 
-            color: #ddd;
+    inset: 0;
 
-            transition: 0.25s;
-        }
+    width: 100%;
+    height: 100%;
 
-        .secondary-button:hover {
-            border-color: var(--red);
-            color: white;
-        }
+    object-fit: cover;
 
+    transition: 0.5s;
+}
 
-        /* =========================
-           GENERAL SECTION
-        ========================= */
+.portfolio-card:hover .portfolio-image {
+    transform: scale(1.035);
+}
 
-        section {
-            padding: 110px 7%;
-        }
+.portfolio-overlay {
+    position: absolute;
 
-        .section-header {
-            margin-bottom: 45px;
-        }
+    inset: 0;
 
-        .section-label {
-            color: var(--red);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
 
-            font-size: 12px;
-            font-weight: 800;
+    padding: 30px;
 
-            letter-spacing: 2px;
+    background:
+        linear-gradient(
+            to top,
+            rgba(0,0,0,0.9),
+            rgba(0,0,0,0.15) 70%,
+            transparent
+        );
+}
 
-            margin-bottom: 10px;
-        }
+.project-number {
+    color: var(--red);
 
-        .section-title {
-            font-family: "Anton", sans-serif;
+    font-size: 11px;
+    font-weight: 900;
 
-            font-size: clamp(42px, 6vw, 75px);
+    letter-spacing: 2px;
 
-            line-height: 0.95;
-        }
+    margin-bottom: 8px;
+}
 
-        .section-description {
-            max-width: 650px;
+.portfolio-overlay h3 {
+    font-family: "Anton", sans-serif;
 
-            margin-top: 18px;
+    font-size: 40px;
 
-            color: var(--gray);
+    text-transform: uppercase;
+}
 
-            line-height: 1.7;
-        }
+.portfolio-overlay p {
+    color: #bbb;
 
+    margin-top: 5px;
 
-        /* =========================
-           WORK
-        ========================= */
+    font-size: 13px;
+}
 
-        #work {
-            background: #080808;
-        }
 
-        .work-grid {
-            display: grid;
+/* =========================
+   EMPTY IMAGE FALLBACK
+========================= */
 
-            grid-template-columns: repeat(2, 1fr);
+.image-error {
+    background:
+        linear-gradient(
+            135deg,
+            #111,
+            #190506
+        );
 
-            gap: 18px;
-        }
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-        .work-card {
-            position: relative;
+    color: #555;
 
-            min-height: 330px;
+    font-weight: 900;
+}
 
-            background: #101010;
 
-            border: 1px solid #242424;
+/* =========================
+   PRICING
+========================= */
 
-            overflow: hidden;
+.pricing-grid {
+    display: grid;
 
-            cursor: pointer;
+    grid-template-columns: repeat(3, 1fr);
 
-            border-radius: 5px;
+    gap: 18px;
+}
 
-            transition:
-                transform 0.35s,
-                border-color 0.35s;
-        }
+.price-card {
+    background: #0d0d0d;
 
-        .work-card.large {
-            grid-column: span 2;
-            min-height: 480px;
-        }
+    border: 1px solid var(--border);
 
-        .work-card:hover {
-            transform: translateY(-6px);
-            border-color: #6b1111;
-        }
+    border-radius: 10px;
 
-        .work-image {
-            width: 100%;
-            height: 100%;
+    padding: 35px;
 
-            object-fit: cover;
+    transition: 0.3s;
+}
 
-            position: absolute;
+.price-card:hover {
+    transform: translateY(-6px);
 
-            inset: 0;
+    border-color: rgba(229,9,20,0.45);
+}
 
-            transition:
-                transform 0.6s ease,
-                filter 0.4s ease;
-        }
+.price-card.featured {
+    border-color: var(--red);
 
-        .work-card:hover .work-image {
-            transform: scale(1.06);
-            filter: brightness(0.72);
-        }
+    box-shadow:
+        0 0 35px rgba(229,9,20,0.08);
+}
 
-        .work-overlay {
-            position: absolute;
+.price-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-            inset: 0;
+    margin-bottom: 25px;
+}
 
-            display: flex;
+.price-card h3 {
+    font-size: 15px;
 
-            flex-direction: column;
-            justify-content: flex-end;
+    text-transform: uppercase;
 
-            padding: 30px;
+    letter-spacing: 1px;
+}
 
-            background:
-                linear-gradient(
-                    to top,
-                    rgba(0,0,0,0.95),
-                    rgba(0,0,0,0.05) 70%
-                );
+.badge {
+    background: var(--red);
 
-            z-index: 2;
-        }
+    padding: 5px 8px;
 
-        .work-category {
-            color: #ff5a5a;
+    border-radius: 4px;
 
-            font-size: 11px;
-            font-weight: 800;
+    font-size: 9px;
+    font-weight: 900;
+}
 
-            letter-spacing: 2px;
+.price {
+    font-family: "Anton", sans-serif;
 
-            margin-bottom: 8px;
-        }
+    font-size: 58px;
 
-        .work-title {
-            font-family: "Anton", sans-serif;
+    margin-bottom: 10px;
+}
 
-            font-size: 34px;
+.price span {
+    color: #777;
 
-            letter-spacing: 0.5px;
-        }
+    font-family: "Inter", sans-serif;
 
-        .work-description {
-            color: #c4c4c4;
+    font-size: 13px;
+}
 
-            font-size: 13px;
+.price-description {
+    color: #777;
 
-            margin-top: 5px;
-        }
+    font-size: 13px;
 
+    line-height: 1.7;
 
-        /* =========================
-           PRICING
-        ========================= */
+    margin-bottom: 25px;
+}
 
-        .pricing-grid {
-            display: grid;
+.features {
+    list-style: none;
+}
 
-            grid-template-columns: repeat(3, 1fr);
+.features li {
+    color: #bbb;
 
-            gap: 18px;
+    font-size: 13px;
 
-            margin-top: 45px;
-        }
+    padding: 10px 0;
 
-        .price-card {
-            background: #0d0d0d;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
 
-            border: 1px solid #242424;
+.features li::before {
+    content: "✓";
 
-            padding: 35px;
+    color: var(--red);
 
-            border-radius: 5px;
+    font-weight: 900;
 
-            position: relative;
+    margin-right: 9px;
+}
 
-            transition: 0.3s;
-        }
 
-        .price-card:hover {
-            border-color: #641111;
-            transform: translateY(-5px);
-        }
+/* =========================
+   ABOUT
+========================= */
 
-        .price-card.featured {
-            border-color: var(--red);
-        }
+.about-grid {
+    display: grid;
 
-        .featured-label {
-            position: absolute;
+    grid-template-columns: 1fr 1fr;
 
-            top: -12px;
-            right: 20px;
+    gap: 70px;
 
-            background: var(--red);
+    align-items: center;
+}
 
-            padding: 5px 10px;
+.about-text h2 {
+    font-family: "Anton", sans-serif;
 
-            font-size: 10px;
+    font-size: clamp(55px, 7vw, 90px);
 
-            font-weight: 900;
+    line-height: 0.9;
 
-            letter-spacing: 1px;
-        }
+    text-transform: uppercase;
 
-        .price-name {
-            font-family: "Anton", sans-serif;
+    margin-bottom: 25px;
+}
 
-            font-size: 32px;
+.about-text p {
+    color: #888;
 
-            margin-bottom: 10px;
-        }
+    line-height: 1.8;
 
-        .price {
-            font-family: "Anton", sans-serif;
+    margin-bottom: 18px;
+}
 
-            font-size: 48px;
+.about-box {
+    min-height: 400px;
 
-            color: var(--red);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-            margin-bottom: 20px;
-        }
+    padding: 50px;
 
-        .price span {
-            color: #777;
+    background:
+        linear-gradient(
+            145deg,
+            #121212,
+            #090909
+        );
 
-            font-family: "Inter", sans-serif;
+    border: 1px solid var(--border);
 
-            font-size: 13px;
-        }
+    border-radius: 10px;
+}
 
-        .price-list {
-            list-style: none;
+.about-stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-            display: flex;
+    padding: 22px 0;
 
-            flex-direction: column;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
 
-            gap: 12px;
+.about-stat:last-child {
+    border-bottom: none;
+}
 
-            color: #aaa;
+.about-stat strong {
+    font-family: "Anton", sans-serif;
 
-            font-size: 14px;
+    font-size: 35px;
 
-            margin-bottom: 30px;
-        }
+    color: var(--red);
+}
 
-        .price-list li::before {
-            content: "✓";
+.about-stat span {
+    color: #888;
 
-            color: var(--red);
+    font-size: 12px;
 
-            font-weight: 900;
+    text-transform: uppercase;
 
-            margin-right: 9px;
-        }
+    letter-spacing: 1px;
+}
 
-        .price-button {
-            display: block;
 
-            text-align: center;
+/* =========================
+   COMMISSION
+========================= */
 
-            border: 1px solid #333;
+.commission {
+    position: relative;
 
-            padding: 13px;
+    overflow: hidden;
 
-            border-radius: 4px;
+    padding: 100px 50px;
 
-            font-size: 13px;
+    border: 1px solid rgba(229,9,20,0.3);
 
-            font-weight: 800;
+    border-radius: 12px;
 
-            transition: 0.25s;
-        }
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(229,9,20,0.14),
+            transparent 40%
+        ),
+        #0b0b0b;
+}
 
-        .price-button:hover {
-            background: var(--red);
-            border-color: var(--red);
-        }
+.commission h2 {
+    font-family: "Anton", sans-serif;
 
+    font-size: clamp(55px, 8vw, 100px);
 
-        /* =========================
-           ABOUT
-        ========================= */
+    line-height: 0.9;
 
-        .about {
-            background: #050505;
-        }
+    max-width: 800px;
 
-        .about-grid {
-            display: grid;
+    text-transform: uppercase;
+}
 
-            grid-template-columns: 1.1fr 0.9fr;
+.commission p {
+    max-width: 600px;
 
-            gap: 70px;
+    color: #888;
 
-            align-items: center;
-        }
+    line-height: 1.8;
 
-        .about-text p {
-            color: #a7a7a7;
+    margin-top: 20px;
+}
 
-            line-height: 1.8;
+.commission-buttons {
+    display: flex;
+    gap: 12px;
 
-            margin-bottom: 20px;
-        }
+    margin-top: 30px;
+}
 
-        .stats {
-            display: grid;
 
-            grid-template-columns: repeat(2, 1fr);
+/* =========================
+   FOOTER
+========================= */
 
-            gap: 15px;
-        }
+footer {
+    padding: 50px 0;
 
-        .stat {
-            background: #0d0d0d;
+    border-top: 1px solid rgba(255,255,255,0.07);
 
-            border: 1px solid #222;
+    margin-top: 120px;
+}
 
-            padding: 28px;
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-            border-radius: 4px;
-        }
+.footer-logo {
+    font-family: "Anton", sans-serif;
 
-        .stat-number {
-            font-family: "Anton", sans-serif;
+    font-size: 25px;
+}
 
-            font-size: 45px;
+.footer-logo span {
+    color: var(--red);
+}
 
-            color: var(--red);
-        }
+.footer-text {
+    color: #555;
 
-        .stat-text {
-            color: #999;
+    font-size: 12px;
+}
 
-            font-size: 13px;
 
-            margin-top: 5px;
-        }
+/* =========================
+   LIGHTBOX
+========================= */
 
+.lightbox {
+    position: fixed;
 
-        /* =========================
-           COMMISSION
-        ========================= */
+    inset: 0;
 
-        .commission {
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(180,0,0,0.12),
-                    transparent 55%
-                ),
-                #080808;
+    z-index: 2000;
 
-            text-align: center;
-        }
+    display: none;
+    align-items: center;
+    justify-content: center;
 
-        .commission-box {
-            max-width: 850px;
+    padding: 30px;
 
-            margin: auto;
+    background: rgba(0,0,0,0.92);
 
-            padding: 70px 30px;
+    backdrop-filter: blur(12px);
+}
 
-            border: 1px solid #2b2b2b;
+.lightbox.active {
+    display: flex;
+}
 
-            background: rgba(10,10,10,0.8);
+.lightbox-content {
+    position: relative;
 
-            border-radius: 6px;
-        }
+    max-width: 1200px;
+    max-height: 90vh;
 
-        .commission h2 {
-            font-family: "Anton", sans-serif;
+    width: 100%;
+}
 
-            font-size: clamp(45px, 7vw, 80px);
+.lightbox-image {
+    display: block;
 
-            margin-bottom: 20px;
-        }
+    width: 100%;
+    max-height: 85vh;
 
-        .commission p {
-            color: #999;
+    object-fit: contain;
 
-            max-width: 580px;
+    border-radius: 8px;
+}
 
-            margin: 0 auto 30px;
+.lightbox-close {
+    position: absolute;
 
-            line-height: 1.7;
-        }
+    top: -50px;
+    right: 0;
 
+    width: 40px;
+    height: 40px;
 
-        /* =========================
-           FOOTER
-        ========================= */
+    border: 1px solid #333;
 
-        footer {
-            padding: 40px 7%;
+    border-radius: 50%;
 
-            border-top: 1px solid #1d1d1d;
+    background: #111;
 
-            display: flex;
+    color: white;
 
-            justify-content: space-between;
+    font-size: 20px;
 
-            align-items: center;
+    cursor: pointer;
+}
 
-            gap: 20px;
 
-            color: #666;
+/* =========================
+   MOBILE
+========================= */
 
-            font-size: 12px;
-        }
+@media (max-width: 850px) {
 
-        .footer-logo {
-            font-family: "Anton", sans-serif;
+    .nav-links {
+        display: none;
+    }
 
-            font-size: 25px;
+    .nav-buttons {
+        gap: 5px;
+    }
 
-            color: white;
-        }
+    .nav-button {
+        padding: 9px 10px;
+        font-size: 10px;
+    }
 
-        .footer-logo span {
-            color: var(--red);
-        }
+    .hero h1 {
+        font-size: 80px;
+    }
 
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
 
-        /* =========================
-           LIGHTBOX
-        ========================= */
+    .portfolio-card.large {
+        grid-column: span 1;
+        min-height: 400px;
+    }
 
-        .lightbox {
-            position: fixed;
+    .portfolio-card {
+        min-height: 350px;
+    }
 
-            inset: 0;
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
 
-            background: rgba(0,0,0,0.94);
+    .about-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 
-            display: none;
+    .commission {
+        padding: 60px 25px;
+    }
 
-            align-items: center;
+    .footer-inner {
+        flex-direction: column;
+        gap: 15px;
 
-            justify-content: center;
+        text-align: center;
+    }
+}
 
-            padding: 30px;
 
-            z-index: 3000;
-        }
+@media (max-width: 500px) {
 
-        .lightbox.active {
-            display: flex;
-        }
+    .section {
+        padding: 85px 0;
+    }
 
-        .lightbox img {
-            max-width: 92vw;
-            max-height: 88vh;
+    .hero h1 {
+        font-size: 62px;
+    }
 
-            object-fit: contain;
+    .hero-description {
+        font-size: 14px;
+    }
 
-            border: 1px solid #333;
+    .hero-actions {
+        flex-direction: column;
+    }
 
-            box-shadow: 0 0 80px rgba(255,0,0,0.08);
-        }
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+    }
 
-        .close-lightbox {
-            position: absolute;
+    .portfolio-overlay {
+        padding: 20px;
+    }
 
-            top: 25px;
-            right: 30px;
+    .portfolio-overlay h3 {
+        font-size: 30px;
+    }
 
-            font-size: 40px;
+    .commission-buttons {
+        flex-direction: column;
+    }
 
-            color: white;
+    .commission-buttons a {
+        width: 100%;
+    }
+}
 
-            cursor: pointer;
-
-            line-height: 1;
-        }
-
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 850px) {
-
-            nav {
-                padding: 0 5%;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            section {
-                padding-left: 5%;
-                padding-right: 5%;
-            }
-
-            .hero h1 {
-                font-size: clamp(65px, 19vw, 110px);
-            }
-
-            .hero-description {
-                font-size: 16px;
-            }
-
-            .work-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .work-card.large {
-                grid-column: span 1;
-            }
-
-            .work-card {
-                min-height: 300px;
-            }
-
-            .work-card.large {
-                min-height: 380px;
-            }
-
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-                gap: 35px;
-            }
-
-            footer {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-
-        @media (max-width: 500px) {
-
-            .nav-button {
-                display: none;
-            }
-
-            .hero {
-                min-height: 90vh;
-            }
-
-            .hero h1 {
-                font-size: 70px;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-            }
-
-            .hero-buttons a {
-                text-align: center;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .work-overlay {
-                padding: 20px;
-            }
-
-            .work-title {
-                font-size: 28px;
-            }
-        }
-
-    </style>
+</style>
 </head>
+
 
 <body>
 
 
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <nav>
+<header class="navbar">
+
+    <div class="container nav-inner">
 
         <a href="#home" class="logo">
             VIBORA<span>.</span>
         </a>
 
-        <ul class="nav-links">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#about">About</a></li>
-        </ul>
+        <nav class="nav-links">
 
-        <a
-            href="https://discord.gg/MKwFtJAvbv"
-            target="_blank"
-            class="nav-button"
-        >
-            COMMISSION
-        </a>
+            <a href="#work">WORK</a>
 
-    </nav>
+            <a href="#pricing">PRICING</a>
+
+            <a href="#about">ABOUT</a>
+
+            <a href="#contact">CONTACT</a>
+
+        </nav>
+
+        <div class="nav-buttons">
+
+            <a
+                class="nav-button discord-button"
+                href="https://discord.com/users/1514004142342017105"
+                target="_blank"
+                rel="noopener"
+            >
+                MY DISCORD
+            </a>
+
+            <a
+                class="nav-button server-button"
+                href="https://discord.gg/7FTFg7p6sQ"
+                target="_blank"
+                rel="noopener"
+            >
+                JOIN SERVER
+            </a>
+
+        </div>
+
+    </div>
+
+</header>
 
 
-    <!-- =========================
-         HERO
-    ========================= -->
+<!-- =========================
+     HERO
+========================= -->
 
-    <main>
+<section class="hero" id="home">
 
-        <section class="hero" id="home">
+    <div class="container">
 
-            <div class="hero-content">
+        <div class="hero-content">
 
-                <div class="hero-tag">
-                    3D GAME ARTIST • ROBLOX
-                </div>
-
-                <h1>
-                    I MAKE<br>
-                    <span>WORLDS.</span>
-                </h1>
-
-                <p class="hero-description">
-                    I create 3D game art, Roblox renders, environments,
-                    thumbnails and custom visuals designed to make your
-                    game or project stand out.
-                </p>
-
-                <div class="hero-buttons">
-
-                    <a href="#work" class="primary-button">
-                        VIEW MY WORK
-                    </a>
-
-                    <a href="#commission" class="secondary-button">
-                        WORK WITH ME
-                    </a>
-
-                </div>
-
+            <div class="hero-small">
+                3D GAME ARTIST
             </div>
 
-        </section>
-
-
-        <!-- =========================
-             PORTFOLIO
-        ========================= -->
-
-        <section id="work">
-
-            <div class="section-header">
-
-                <div class="section-label">
-                    PORTFOLIO
-                </div>
-
-                <h2 class="section-title">
-                    MY WORK
-                </h2>
-
-                <p class="section-description">
-                    A collection of my 3D renders, game scenes and
-                    creative artwork.
-                </p>
-
-            </div>
-
-
-            <div class="work-grid">
-
-
-                <!-- WARRIOR -->
-
-                <div
-                    class="work-card large"
-                    onclick="openLightbox('images/warrior-render.png')"
-                >
-
-                    <img
-                        src="images/warrior-render.png"
-                        alt="Warrior 3D Render"
-                        class="work-image"
-                    >
-
-                    <div class="work-overlay">
-
-                        <div class="work-category">
-                            3D RENDER
-                        </div>
-
-                        <div class="work-title">
-                            WARRIOR
-                        </div>
-
-                        <div class="work-description">
-                            Character • Combat • Environment
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- FOREST -->
-
-                <div
-                    class="work-card"
-                    onclick="openLightbox('images/forest-render.png')"
-                >
-
-                    <img
-                        src="images/forest-render.png"
-                        alt="Forest 3D Render"
-                        class="work-image"
-                    >
-
-                    <div class="work-overlay">
-
-                        <div class="work-category">
-                            ENVIRONMENT
-                        </div>
-
-                        <div class="work-title">
-                            FOREST
-                        </div>
-
-                        <div class="work-description">
-                            Environment • Lighting • 3D
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- JOKER -->
-
-                <div
-                    class="work-card"
-                    onclick="openLightbox('images/joker-render.png')"
-                >
-
-                    <img
-                        src="images/joker-render.png"
-                        alt="Joker 3D Render"
-                        class="work-image"
-                    >
-
-                    <div class="work-overlay">
-
-                        <div class="work-category">
-                            CHARACTER ART
-                        </div>
-
-                        <div class="work-title">
-                            JOKER
-                        </div>
-
-                        <div class="work-description">
-                            Character • Render • Lighting
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PRICING
-        ========================= -->
-
-        <section id="pricing">
-
-            <div class="section-header">
-
-                <div class="section-label">
-                    SERVICES
-                </div>
-
-                <h2 class="section-title">
-                    PRICING
-                </h2>
-
-                <p class="section-description">
-                    Simple pricing for creators, developers and
-                    Roblox projects.
-                </p>
-
-            </div>
-
-
-            <div class="pricing-grid">
-
-
-                <div class="price-card">
-
-                    <div class="price-name">
-                        BASIC
-                    </div>
-
-                    <div class="price">
-                        $10
-                    </div>
-
-                    <ul class="price-list">
-                        <li>Simple 3D render</li>
-                        <li>Basic lighting</li>
-                        <li>1 character</li>
-                        <li>PNG delivery</li>
-                    </ul>
-
-                    <a
-                        href="https://discord.gg/MKwFtJAvbv"
-                        target="_blank"
-                        class="price-button"
-                    >
-                        ORDER
-                    </a>
-
-                </div>
-
-
-                <div class="price-card featured">
-
-                    <div class="featured-label">
-                        POPULAR
-                    </div>
-
-                    <div class="price-name">
-                        STANDARD
-                    </div>
-
-                    <div class="price">
-                        $20
-                    </div>
-
-                    <ul class="price-list">
-                        <li>Detailed 3D render</li>
-                        <li>Advanced lighting</li>
-                        <li>Characters + environment</li>
-                        <li>Custom composition</li>
-                        <li>High quality PNG</li>
-                    </ul>
-
-                    <a
-                        href="https://discord.gg/MKwFtJAvbv"
-                        target="_blank"
-                        class="price-button"
-                    >
-                        ORDER
-                    </a>
-
-                </div>
-
-
-                <div class="price-card">
-
-                    <div class="price-name">
-                        CUSTOM
-                    </div>
-
-                    <div class="price">
-                        $30+
-                    </div>
-
-                    <ul class="price-list">
-                        <li>Complex scenes</li>
-                        <li>Multiple characters</li>
-                        <li>Advanced environments</li>
-                        <li>Custom requests</li>
-                        <li>Priority work</li>
-                    </ul>
-
-                    <a
-                        href="https://discord.gg/MKwFtJAvbv"
-                        target="_blank"
-                        class="price-button"
-                    >
-                        CONTACT ME
-                    </a>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             ABOUT
-        ========================= -->
-
-        <section class="about" id="about">
-
-            <div class="about-grid">
-
-
-                <div class="about-text">
-
-                    <div class="section-label">
-                        ABOUT
-                    </div>
-
-                    <h2 class="section-title">
-                        WHO IS<br>
-                        VIBORA?
-                    </h2>
-
-                    <br>
-
-                    <p>
-                        I'm a 3D game artist focused on creating
-                        high-quality visuals for Roblox games,
-                        creators and digital projects.
-                    </p>
-
-                    <p>
-                        My goal is simple: make artwork that looks
-                        professional, grabs attention and gives your
-                        project its own identity.
-                    </p>
-
-                    <p>
-                        From characters and environments to thumbnails
-                        and promotional renders, I build visuals
-                        designed around your idea.
-                    </p>
-
-                </div>
-
-
-                <div class="stats">
-
-                    <div class="stat">
-
-                        <div class="stat-number">
-                            3D
-                        </div>
-
-                        <div class="stat-text">
-                            Game Art
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div class="stat-number">
-                            RBLX
-                        </div>
-
-                        <div class="stat-text">
-                            Roblox Focused
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div class="stat-number">
-                            24/7
-                        </div>
-
-                        <div class="stat-text">
-                            Portfolio Available
-                        </div>
-
-                    </div>
-
-
-                    <div class="stat">
-
-                        <div class="stat-number">
-                            ∞
-                        </div>
-
-                        <div class="stat-text">
-                            Creative Possibilities
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             COMMISSION
-        ========================= -->
-
-        <section class="commission" id="commission">
-
-            <div class="commission-box">
-
-                <div class="section-label">
-                    HAVE A PROJECT?
-                </div>
-
-                <h2>
-                    LET'S BUILD IT.
-                </h2>
-
-                <p>
-                    Need a Roblox render, thumbnail, character scene,
-                    environment or custom artwork? Join my Discord
-                    and send me your idea.
-                </p>
+            <h1>
+                I MAKE<br>
+                <span>WORLDS.</span>
+            </h1>
+
+            <p class="hero-description">
+                I create 3D environments, characters, scenes and
+                game-ready artwork designed to make games look
+                better and feel more alive.
+            </p>
+
+            <div class="hero-actions">
 
                 <a
-                    href="https://discord.gg/MKwFtJAvbv"
-                    target="_blank"
+                    href="#work"
                     class="primary-button"
                 >
-                    JOIN DISCORD
+                    VIEW MY WORK
+                </a>
+
+                <a
+                    href="https://discord.com/users/1514004142342017105"
+                    target="_blank"
+                    rel="noopener"
+                    class="secondary-button"
+                >
+                    CONTACT ME
                 </a>
 
             </div>
 
-        </section>
+        </div>
 
-    </main>
+    </div>
+
+</section>
 
 
-    <!-- =========================
-         FOOTER
-    ========================= -->
+<!-- =========================
+     WORK
+========================= -->
 
-    <footer>
+<section class="section" id="work">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                SELECTED WORK
+            </div>
+
+            <h2>
+                MY <span class="red">WORK.</span>
+            </h2>
+
+            <p>
+                A selection of my 3D game-art projects,
+                environments and character renders.
+            </p>
+
+        </div>
+
+
+        <div class="portfolio-grid">
+
+
+            <!-- WARRIOR -->
+
+            <div
+                class="portfolio-card large"
+                onclick="openLightbox(this)"
+            >
+
+                <img
+                    class="portfolio-image"
+                    src="images/Screenshot%202026-06-11%20184754.png"
+                    alt="Warrior 3D game scene"
+                    onerror="imageError(this)"
+                >
+
+                <div class="portfolio-overlay">
+
+                    <div class="project-number">
+                        01 / ENVIRONMENT
+                    </div>
+
+                    <h3>
+                        WARRIOR
+                    </h3>
+
+                    <p>
+                        Cinematic Roblox / game environment
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- FOREST -->
+
+            <div
+                class="portfolio-card"
+                onclick="openLightbox(this)"
+            >
+
+                <img
+                    class="portfolio-image"
+                    src="images/Screenshot%202026-06-11%20180447.png"
+                    alt="Forest 3D environment"
+                    onerror="imageError(this)"
+                >
+
+                <div class="portfolio-overlay">
+
+                    <div class="project-number">
+                        02 / ENVIRONMENT
+                    </div>
+
+                    <h3>
+                        FOREST
+                    </h3>
+
+                    <p>
+                        Natural game environment
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- JOKER STYLE -->
+
+            <div
+                class="portfolio-card"
+                onclick="openLightbox(this)"
+            >
+
+                <img
+                    class="portfolio-image"
+                    src="images/Screenshot%202026-06-11%20191002.png"
+                    alt="Stylized character render"
+                    onerror="imageError(this)"
+                >
+
+                <div class="portfolio-overlay">
+
+                    <div class="project-number">
+                        03 / CHARACTER
+                    </div>
+
+                    <h3>
+                        CHARACTER
+                    </h3>
+
+                    <p>
+                        Stylized character render
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRICING
+========================= -->
+
+<section class="section" id="pricing">
+
+    <div class="container">
+
+        <div class="section-heading">
+
+            <div class="section-label">
+                COMMISSIONS
+            </div>
+
+            <h2>
+                SIMPLE <span class="red">PRICING.</span>
+            </h2>
+
+            <p>
+                Need a custom 3D scene, render or game-art
+                project? Choose a package and contact me.
+            </p>
+
+        </div>
+
+
+        <div class="pricing-grid">
+
+
+            <!-- BASIC -->
+
+            <div class="price-card">
+
+                <div class="price-card-top">
+
+                    <h3>
+                        BASIC
+                    </h3>
+
+                </div>
+
+                <div class="price">
+                    $10
+                </div>
+
+                <p class="price-description">
+                    Small and simple artwork for personal
+                    projects or content.
+                </p>
+
+                <ul class="features">
+
+                    <li>
+                        Simple scene
+                    </li>
+
+                    <li>
+                        Basic lighting
+                    </li>
+
+                    <li>
+                        One main subject
+                    </li>
+
+                    <li>
+                        Game-ready render
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- STANDARD -->
+
+            <div class="price-card featured">
+
+                <div class="price-card-top">
+
+                    <h3>
+                        STANDARD
+                    </h3>
+
+                    <span class="badge">
+                        POPULAR
+                    </span>
+
+                </div>
+
+                <div class="price">
+                    $20
+                </div>
+
+                <p class="price-description">
+                    More detailed scenes designed for
+                    thumbnails, games and content.
+                </p>
+
+                <ul class="features">
+
+                    <li>
+                        Detailed environment
+                    </li>
+
+                    <li>
+                        Custom lighting
+                    </li>
+
+                    <li>
+                        Characters / props
+                    </li>
+
+                    <li>
+                        High-quality render
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- CUSTOM -->
+
+            <div class="price-card">
+
+                <div class="price-card-top">
+
+                    <h3>
+                        CUSTOM
+                    </h3>
+
+                </div>
+
+                <div class="price">
+                    $30<span>+</span>
+                </div>
+
+                <p class="price-description">
+                    Large or complex projects requiring
+                    custom work and extra detail.
+                </p>
+
+                <ul class="features">
+
+                    <li>
+                        Custom environments
+                    </li>
+
+                    <li>
+                        Complex scenes
+                    </li>
+
+                    <li>
+                        Multiple assets
+                    </li>
+
+                    <li>
+                        Custom quote
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="section" id="about">
+
+    <div class="container">
+
+        <div class="about-grid">
+
+
+            <div class="about-text">
+
+                <div class="section-label">
+                    ABOUT ME
+                </div>
+
+                <h2>
+                    BUILD.<br>
+                    CREATE.<br>
+                    <span class="red">REPEAT.</span>
+                </h2>
+
+                <p>
+                    I'm VIBORA, a 3D game artist focused on
+                    creating environments, characters and
+                    visual assets for games and digital projects.
+                </p>
+
+                <p>
+                    My goal is simple: create artwork that
+                    looks good, feels polished and makes
+                    your project stand out.
+                </p>
+
+                <a
+                    href="https://discord.com/users/1514004142342017105"
+                    target="_blank"
+                    rel="noopener"
+                    class="primary-button"
+                >
+                    TALK TO ME
+                </a>
+
+            </div>
+
+
+            <div class="about-box">
+
+                <div class="about-stat">
+
+                    <span>
+                        FOCUS
+                    </span>
+
+                    <strong>
+                        3D
+                    </strong>
+
+                </div>
+
+                <div class="about-stat">
+
+                    <span>
+                        STYLE
+                    </span>
+
+                    <strong>
+                        GAME
+                    </strong>
+
+                </div>
+
+                <div class="about-stat">
+
+                    <span>
+                        PLATFORM
+                    </span>
+
+                    <strong>
+                        ROBLOX
+                    </strong>
+
+                </div>
+
+                <div class="about-stat">
+
+                    <span>
+                        AVAILABLE
+                    </span>
+
+                    <strong>
+                        YES
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     COMMISSION
+========================= -->
+
+<section class="section" id="contact">
+
+    <div class="container">
+
+        <div class="commission">
+
+            <div class="section-label">
+                HAVE A PROJECT?
+            </div>
+
+            <h2>
+                LET'S MAKE<br>
+                SOMETHING <span class="red">SICK.</span>
+            </h2>
+
+            <p>
+                Want a custom render, environment, character
+                scene or other 3D artwork? Send me a message
+                on Discord and let's talk about your project.
+            </p>
+
+            <div class="commission-buttons">
+
+                <a
+                    href="https://discord.com/users/1514004142342017105"
+                    target="_blank"
+                    rel="noopener"
+                    class="primary-button"
+                >
+                    MY DISCORD
+                </a>
+
+                <a
+                    href="https://discord.gg/7FTFg7p6sQ"
+                    target="_blank"
+                    rel="noopener"
+                    class="secondary-button"
+                >
+                    JOIN MY SERVER
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="container footer-inner">
 
         <div class="footer-logo">
             VIBORA<span>.</span>
         </div>
 
-        <div>
-            © 2026 VIBORA. All rights reserved.
+        <div class="footer-text">
+            © 2026 VIBORA — 3D GAME ARTIST
         </div>
 
-        <div>
-            3D GAME ARTIST
-        </div>
+        <a
+            href="https://discord.com/users/1514004142342017105"
+            target="_blank"
+            rel="noopener"
+            class="footer-text"
+        >
+            DISCORD
+        </a>
 
-    </footer>
+    </div>
+
+</footer>
 
 
-    <!-- =========================
-         LIGHTBOX
-    ========================= -->
+<!-- =========================
+     LIGHTBOX
+========================= -->
 
-    <div
-        class="lightbox"
-        id="lightbox"
-        onclick="closeLightbox(event)"
-    >
+<div
+    class="lightbox"
+    id="lightbox"
+    onclick="closeLightbox(event)"
+>
 
-        <div
-            class="close-lightbox"
-            onclick="closeLightbox()"
+    <div class="lightbox-content">
+
+        <button
+            class="lightbox-close"
+            onclick="closeLightbox(event)"
         >
             ×
-        </div>
+        </button>
 
         <img
+            class="lightbox-image"
             id="lightboxImage"
             src=""
-            alt="Portfolio Preview"
+            alt="Portfolio preview"
         >
 
     </div>
 
-
-    <!-- =========================
-         JAVASCRIPT
-    ========================= -->
-
-    <script>
-
-        function openLightbox(image) {
-
-            const lightbox =
-                document.getElementById("lightbox");
-
-            const lightboxImage =
-                document.getElementById("lightboxImage");
-
-            lightboxImage.src = image;
-
-            lightbox.classList.add("active");
-
-            document.body.style.overflow = "hidden";
-        }
+</div>
 
 
-        function closeLightbox(event) {
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
-            if (
-                event &&
-                event.target &&
-                event.target.id !== "lightbox" &&
-                event.target.className !== "close-lightbox"
-            ) {
-                return;
-            }
+<script>
 
-            const lightbox =
-                document.getElementById("lightbox");
+/* =========================
+   IMAGE ERROR
+========================= */
 
-            lightbox.classList.remove("active");
+function imageError(image) {
 
-            document.body.style.overflow = "";
-        }
+    image.style.display = "none";
+
+    const parent = image.parentElement;
+
+    parent.classList.add("image-error");
+
+    const message = document.createElement("div");
+
+    message.innerText = "IMAGE NOT FOUND";
+
+    message.style.fontSize = "13px";
+    message.style.letterSpacing = "2px";
+
+    parent.appendChild(message);
+}
 
 
-        document.addEventListener("keydown", function(event) {
+/* =========================
+   LIGHTBOX
+========================= */
 
-            if (event.key === "Escape") {
+function openLightbox(card) {
 
-                const lightbox =
-                    document.getElementById("lightbox");
+    const image = card.querySelector(".portfolio-image");
 
-                lightbox.classList.remove("active");
+    if (!image || image.style.display === "none") {
+        return;
+    }
 
-                document.body.style.overflow = "";
+    const lightbox =
+        document.getElementById("lightbox");
 
-            }
+    const lightboxImage =
+        document.getElementById("lightboxImage");
 
+    lightboxImage.src = image.src;
+
+    lightboxImage.alt = image.alt;
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+}
+
+
+function closeLightbox(event) {
+
+    if (
+        event.target.id === "lightbox" ||
+        event.target.classList.contains("lightbox-close")
+    ) {
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        lightbox.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+}
+
+
+/* =========================
+   ESCAPE KEY
+========================= */
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        const lightbox =
+            document.getElementById("lightbox");
+
+        lightbox.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    }
+
+});
+
+
+/* =========================
+   SMOOTH NAVIGATION
+========================= */
+
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+    link.addEventListener("click", function(event) {
+
+        const target =
+            document.querySelector(this.getAttribute("href"));
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        target.scrollIntoView({
+            behavior: "smooth"
         });
 
-    </script>
+    });
+
+});
+
+</script>
+
 
 </body>
 </html>
