@@ -6,18 +6,12 @@
 
 <title>VIBORA — 3D Game Artist</title>
 
-<meta
-    name="description"
-    content="VIBORA — 3D Game Artist creating Roblox environments, characters, scenes and game-ready artwork."
->
+<meta name="description" content="VIBORA — 3D Game Artist creating Roblox environments, characters, scenes and game-ready artwork.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-    href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
->
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -145,7 +139,6 @@ body::after {
     top: 0;
     left: 0;
     width: 100%;
-
     z-index: 1000;
 
     background: rgba(7,7,7,0.82);
@@ -898,6 +891,13 @@ footer {
    MOBILE
 ========================================================= */
 
+@media (max-width: 1100px) {
+
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 850px) {
 
     .nav-links {
@@ -923,7 +923,6 @@ footer {
 
     .portfolio-card.large {
         grid-column: span 1;
-
         min-height: 400px;
     }
 
@@ -937,7 +936,6 @@ footer {
 
     .about-grid {
         grid-template-columns: 1fr;
-
         gap: 30px;
     }
 
@@ -947,9 +945,7 @@ footer {
 
     .footer-inner {
         flex-direction: column;
-
         gap: 15px;
-
         text-align: center;
     }
 }
@@ -1014,27 +1010,17 @@ footer {
             VIBORA<span>.</span>
         </a>
 
-
         <nav class="nav-links">
 
-            <a href="#work">
-                WORK
-            </a>
+            <a href="#work">WORK</a>
 
-            <a href="#pricing">
-                PRICING
-            </a>
+            <a href="#pricing">PRICING</a>
 
-            <a href="#about">
-                ABOUT
-            </a>
+            <a href="#about">ABOUT</a>
 
-            <a href="#contact">
-                CONTACT
-            </a>
+            <a href="#contact">CONTACT</a>
 
         </nav>
-
 
         <div class="nav-buttons">
 
@@ -1046,7 +1032,6 @@ footer {
             >
                 MY DISCORD
             </a>
-
 
             <a
                 class="nav-button server-button"
@@ -1064,7 +1049,6 @@ footer {
 </header>
 
 
-
 <!-- =========================================================
      HERO
 ========================================================= -->
@@ -1079,12 +1063,10 @@ footer {
                 3D GAME ARTIST
             </div>
 
-
             <h1>
                 I MAKE<br>
                 <span>WORLDS.</span>
             </h1>
-
 
             <p class="hero-description">
                 I create 3D environments, characters, scenes and
@@ -1092,16 +1074,11 @@ footer {
                 better and feel more alive.
             </p>
 
-
             <div class="hero-actions">
 
-                <a
-                    href="#work"
-                    class="primary-button"
-                >
+                <a href="#work" class="primary-button">
                     VIEW MY WORK
                 </a>
-
 
                 <a
                     href="https://discord.com/users/1514004142342017105"
@@ -1121,15 +1098,13 @@ footer {
 </section>
 
 
-
 <!-- =========================================================
-     WORK
+     PORTFOLIO
 ========================================================= -->
 
 <section class="section" id="work">
 
     <div class="container">
-
 
         <div class="section-heading">
 
@@ -1149,13 +1124,10 @@ footer {
         </div>
 
 
-
         <div class="portfolio-grid">
 
 
-            <!-- =================================================
-                 WARRIOR
-            ================================================== -->
+            <!-- WARRIOR -->
 
             <div
                 class="portfolio-card large"
@@ -1168,7 +1140,6 @@ footer {
                     alt="Warrior 3D game scene"
                     onerror="imageError(this)"
                 >
-
 
                 <div class="portfolio-overlay">
 
@@ -1189,10 +1160,7 @@ footer {
             </div>
 
 
-
-            <!-- =================================================
-                 FOREST
-            ================================================== -->
+            <!-- FOREST -->
 
             <div
                 class="portfolio-card"
@@ -1205,7 +1173,6 @@ footer {
                     alt="Forest 3D environment"
                     onerror="imageError(this)"
                 >
-
 
                 <div class="portfolio-overlay">
 
@@ -1226,10 +1193,7 @@ footer {
             </div>
 
 
-
-            <!-- =================================================
-                 CHARACTER
-            ================================================== -->
+            <!-- CHARACTER -->
 
             <div
                 class="portfolio-card"
@@ -1242,7 +1206,6 @@ footer {
                     alt="Stylized character render"
                     onerror="imageError(this)"
                 >
-
 
                 <div class="portfolio-overlay">
 
@@ -1270,7 +1233,6 @@ footer {
 </section>
 
 
-
 <!-- =========================================================
      PRICING
 ========================================================= -->
@@ -1278,7 +1240,6 @@ footer {
 <section class="section" id="pricing">
 
     <div class="container">
-
 
         <div class="section-heading">
 
@@ -1291,18 +1252,66 @@ footer {
             </h2>
 
             <p>
-                Need a custom 3D scene, render or game-art
-                project? Choose a package and contact me.
+                Choose the package that fits your project.
+                Bigger or more complicated projects can use
+                the Custom option.
             </p>
 
         </div>
 
 
-
         <div class="pricing-grid">
 
 
-            <!-- BASIC -->
+            <!-- =================================================
+                 STARTER — $5
+            ================================================== -->
+
+            <div class="price-card">
+
+                <div class="price-card-top">
+
+                    <h3>
+                        STARTER
+                    </h3>
+
+                </div>
+
+                <div class="price">
+                    $5
+                </div>
+
+                <p class="price-description">
+                    A quick and simple option for small
+                    projects, basic renders, or simple assets.
+                </p>
+
+                <ul class="features">
+
+                    <li>
+                        Simple render
+                    </li>
+
+                    <li>
+                        One main subject
+                    </li>
+
+                    <li>
+                        Basic lighting
+                    </li>
+
+                    <li>
+                        Simple background
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- =================================================
+                 BASIC — $10
+            ================================================== -->
 
             <div class="price-card">
 
@@ -1314,30 +1323,27 @@ footer {
 
                 </div>
 
-
                 <div class="price">
                     $10
                 </div>
 
-
                 <p class="price-description">
-                    Small and simple artwork for personal
-                    projects or content.
+                    A step up from Starter with a more complete
+                    scene and better presentation.
                 </p>
-
 
                 <ul class="features">
 
                     <li>
-                        Simple scene
+                        Simple environment
                     </li>
 
                     <li>
-                        Basic lighting
+                        Better lighting
                     </li>
 
                     <li>
-                        One main subject
+                        Props included
                     </li>
 
                     <li>
@@ -1349,8 +1355,9 @@ footer {
             </div>
 
 
-
-            <!-- STANDARD -->
+            <!-- =================================================
+                 STANDARD — $15
+            ================================================== -->
 
             <div class="price-card featured">
 
@@ -1366,17 +1373,14 @@ footer {
 
                 </div>
 
-
                 <div class="price">
-                    $20
+                    $15
                 </div>
 
-
                 <p class="price-description">
-                    More detailed scenes designed for
-                    thumbnails, games and content.
+                    The best choice for most clients wanting
+                    a detailed and polished game-art scene.
                 </p>
-
 
                 <ul class="features">
 
@@ -1385,15 +1389,19 @@ footer {
                     </li>
 
                     <li>
+                        Character or props
+                    </li>
+
+                    <li>
                         Custom lighting
                     </li>
 
                     <li>
-                        Characters / props
+                        High-quality render
                     </li>
 
                     <li>
-                        High-quality render
+                        More detailed composition
                     </li>
 
                 </ul>
@@ -1401,8 +1409,59 @@ footer {
             </div>
 
 
+            <!-- =================================================
+                 ADVANCED — $25
+            ================================================== -->
 
-            <!-- CUSTOM -->
+            <div class="price-card">
+
+                <div class="price-card-top">
+
+                    <h3>
+                        ADVANCED
+                    </h3>
+
+                </div>
+
+                <div class="price">
+                    $25
+                </div>
+
+                <p class="price-description">
+                    A high-detail commission for clients who
+                    want a larger and more impressive scene.
+                </p>
+
+                <ul class="features">
+
+                    <li>
+                        Large environment
+                    </li>
+
+                    <li>
+                        Multiple props
+                    </li>
+
+                    <li>
+                        Character integration
+                    </li>
+
+                    <li>
+                        Advanced lighting
+                    </li>
+
+                    <li>
+                        High-detail final render
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- =================================================
+                 CUSTOM — $30+
+            ================================================== -->
 
             <div class="price-card">
 
@@ -1414,30 +1473,31 @@ footer {
 
                 </div>
 
-
                 <div class="price">
                     $30<span>+</span>
                 </div>
 
-
                 <p class="price-description">
-                    Large or complex projects requiring
-                    custom work and extra detail.
+                    For large, complex, or highly specific
+                    projects that don't fit another package.
                 </p>
-
 
                 <ul class="features">
 
                     <li>
-                        Custom environments
+                        Custom project scope
+                    </li>
+
+                    <li>
+                        Large environments
+                    </li>
+
+                    <li>
+                        Multiple characters
                     </li>
 
                     <li>
                         Complex scenes
-                    </li>
-
-                    <li>
-                        Multiple assets
                     </li>
 
                     <li>
@@ -1454,7 +1514,6 @@ footer {
     </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -1474,13 +1533,11 @@ footer {
                     ABOUT ME
                 </div>
 
-
                 <h2>
                     BUILD.<br>
                     CREATE.<br>
                     <span class="red">REPEAT.</span>
                 </h2>
-
 
                 <p>
                     I'm VIBORA, a 3D game artist focused on
@@ -1488,13 +1545,11 @@ footer {
                     visual assets for games and digital projects.
                 </p>
 
-
                 <p>
                     My goal is simple: create artwork that
                     looks good, feels polished and makes
                     your project stand out.
                 </p>
-
 
                 <a
                     href="https://discord.com/users/1514004142342017105"
@@ -1508,9 +1563,7 @@ footer {
             </div>
 
 
-
             <div class="about-box">
-
 
                 <div class="about-stat">
 
@@ -1524,7 +1577,6 @@ footer {
 
                 </div>
 
-
                 <div class="about-stat">
 
                     <span>
@@ -1536,7 +1588,6 @@ footer {
                     </strong>
 
                 </div>
-
 
                 <div class="about-stat">
 
@@ -1550,7 +1601,6 @@ footer {
 
                 </div>
 
-
                 <div class="about-stat">
 
                     <span>
@@ -1563,16 +1613,13 @@ footer {
 
                 </div>
 
-
             </div>
-
 
         </div>
 
     </div>
 
 </section>
-
 
 
 <!-- =========================================================
@@ -1585,17 +1632,14 @@ footer {
 
         <div class="commission">
 
-
             <div class="section-label">
                 HAVE A PROJECT?
             </div>
-
 
             <h2>
                 LET'S MAKE<br>
                 SOMETHING <span class="red">SICK.</span>
             </h2>
-
 
             <p>
                 Want a custom render, environment, character
@@ -1603,9 +1647,7 @@ footer {
                 on Discord and let's talk about your project.
             </p>
 
-
             <div class="commission-buttons">
-
 
                 <a
                     href="https://discord.com/users/1514004142342017105"
@@ -1616,7 +1658,6 @@ footer {
                     MY DISCORD
                 </a>
 
-
                 <a
                     href="https://discord.gg/7FTFg7p6sQ"
                     target="_blank"
@@ -1625,7 +1666,6 @@ footer {
                 >
                     JOIN MY SERVER
                 </a>
-
 
             </div>
 
@@ -1636,7 +1676,6 @@ footer {
 </section>
 
 
-
 <!-- =========================================================
      FOOTER
 ========================================================= -->
@@ -1645,16 +1684,13 @@ footer {
 
     <div class="container footer-inner">
 
-
         <div class="footer-logo">
             VIBORA<span>.</span>
         </div>
 
-
         <div class="footer-text">
             © 2026 VIBORA — 3D GAME ARTIST
         </div>
-
 
         <a
             href="https://discord.com/users/1514004142342017105"
@@ -1665,11 +1701,9 @@ footer {
             DISCORD
         </a>
 
-
     </div>
 
 </footer>
-
 
 
 <!-- =========================================================
@@ -1684,14 +1718,12 @@ footer {
 
     <div class="lightbox-content">
 
-
         <button
             class="lightbox-close"
             onclick="closeLightbox(event)"
         >
             ×
         </button>
-
 
         <img
             class="lightbox-image"
@@ -1700,11 +1732,9 @@ footer {
             alt="Portfolio preview"
         >
 
-
     </div>
 
 </div>
-
 
 
 <!-- =========================================================
@@ -1712,10 +1742,6 @@ footer {
 ========================================================= -->
 
 <script>
-
-/* =========================================================
-   IMAGE ERROR HANDLER
-========================================================= */
 
 function imageError(image) {
 
@@ -1736,10 +1762,6 @@ function imageError(image) {
 }
 
 
-/* =========================================================
-   LIGHTBOX OPEN
-========================================================= */
-
 function openLightbox(card) {
 
     const image =
@@ -1759,7 +1781,6 @@ function openLightbox(card) {
     const lightboxImage =
         document.getElementById("lightboxImage");
 
-
     lightboxImage.src = image.src;
 
     lightboxImage.alt = image.alt;
@@ -1769,10 +1790,6 @@ function openLightbox(card) {
     document.body.style.overflow = "hidden";
 }
 
-
-/* =========================================================
-   LIGHTBOX CLOSE
-========================================================= */
 
 function closeLightbox(event) {
 
@@ -1792,10 +1809,6 @@ function closeLightbox(event) {
 }
 
 
-/* =========================================================
-   ESCAPE KEY
-========================================================= */
-
 document.addEventListener(
     "keydown",
     function(event) {
@@ -1814,10 +1827,6 @@ document.addEventListener(
     }
 );
 
-
-/* =========================================================
-   SMOOTH NAVIGATION
-========================================================= */
 
 document
     .querySelectorAll('a[href^="#"]')
@@ -1848,7 +1857,6 @@ document
     });
 
 </script>
-
 
 </body>
 </html>
